@@ -8,13 +8,13 @@ type Systems = {
   description: string;
   features: string[];
   link: string;
-}
+}[]
 
 
 function CrimeReportingSystems() {
   const categories:string[] = ["Anonymous Reporting", "Real-time Updates", "Community Reports", "Map Integration", "AI Analysis", "Emergency Response","Neighborhood Watch", "Social Features", "Alert System", "Mobile App"];
   const [activeTab, setActiveTab] = useState<string>("All");
-  const [data, setData] = useState<Systems[]>([]);
+  const [data, setData] = useState<Systems>([]);
 
 
   const getFeatureIcon = (feature: string) => {
