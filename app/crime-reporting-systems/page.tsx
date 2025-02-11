@@ -2,11 +2,19 @@
 import React, { useState } from 'react';
 import { Shield, AlertTriangle, Users, Globe, Smartphone, MessageSquare, Navigation, Bell } from 'lucide-react';
 
+type Systems = {
+  id: number;
+  title: string;
+  description: string;
+  features: string[];
+  link: string;
+}
+
 
 function CrimeReportingSystems() {
   const categories:string[] = ["Anonymous Reporting", "Real-time Updates", "Community Reports", "Map Integration", "AI Analysis", "Emergency Response","Neighborhood Watch", "Social Features", "Alert System", "Mobile App"];
   const [activeTab, setActiveTab] = useState<string>("All");
-  const [data, setData] = useState([]);
+  const [data, setData] = useState<Systems[]>([]);
 
 
   const getFeatureIcon = (feature: string) => {
@@ -27,7 +35,7 @@ function CrimeReportingSystems() {
     const categories:string[] = ["Anonymous Reporting", "Real-time Updates", "Community Reports", "Map Integration", "AI Analysis", "Emergency Response","Neighborhood Watch", "Social Features", "Alert System", "Mobile App"];
     const response = await fetch(`https://www.googleapis.com/customsearch/v1?key=AIzaSyC4n_gMM8vYGT86I7m32fJgCi1mAoBA-T0&cx=9761500df74d5452d&q=crime-reporting-systems-that-has-${feature}`)
     const data = await response.json()
-    const systems = data.items.map((item, i) =>({
+    const systems:Systems = data.items.map((item: { title: string; snippet: string; link: string; }, i: number) =>({
       id: i,
       title: item.title,
       description: item.snippet,
