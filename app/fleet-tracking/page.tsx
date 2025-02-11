@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client"
-import Link from 'next/link';
 import React from 'react'
 import { useState } from 'react';
 
@@ -14,7 +13,6 @@ type Car = {
 }[]
 
 function Fleet() {
-  const groupName = "GROUP 26 PROJECT";
   const carFleet = [
     {id: "CF001", make: "Toyota", model: "Corolla"},
     {id: "CF002", make: "Ford", model: "Mustang"},
@@ -40,13 +38,8 @@ function Fleet() {
 
 
   return (
-    <main className="px-10 py-5">
-      <div className="flex justify-between items-center">
-        <p className="font-bold text-xl">{groupName}</p>
-        <Link href="/#gsc.tab=0" onClick={() => setTimeout(() => window.location.reload(), 170)}><button className="hover:bg-red-800 bg-red-500 text-white text-base px-5 py-3 rounded-lg transition-all">Search Engine Results Page</button></Link>
-      </div>
-
-      <header className="flex gap-5 items-center mt-4">
+    <main>
+      <header className="flex gap-5 items-center mt-0.5">
         <p className="text-2xl text-black font-bold">Fleet Tracking App</p>
         <button onClick={trackFleet} className="bg-cyan-800 hover:bg-cyan-500 text-white text-base px-5 py-3 rounded-lg transition-all">Track Fleet</button>
       </header>
